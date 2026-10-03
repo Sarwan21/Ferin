@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Kurd Smart</title>
+    <meta name="description" content="Kurd Smart — motivation, books and daily growth.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ==========================
+     Preloader
+    ========================== -->
+    <div id="preloader">
+        <div class="loader-circle"></div>
+        <h2>Kurd Smart</h2>
+        <p data-i18n="preloaderText">چاوەڕوانبە...</p>
+    </div>
+
+    <!-- ==========================
+     Reading Progress Bar
+    ========================== -->
+    <div id="progressContainer">
+        <div id="progressBar"></div>
+    </div>
+
+    <!-- ======================= -->
+    <!-- Header -->
+    <!-- ======================= -->
+    <header>
+        <nav>
+            <a href="#hero" class="logo">
+                <img src="logo.png" alt="Kurd Smart Logo" onerror="this.style.display='none'; this.parentElement.classList.add('text-logo')">
+                <span class="logo-text">Kurd Smart</span>
+            </a>
+
+            <ul id="nav-menu">
+                <li><a href="#hero" class="active" data-i18n="navHome">دەستپێک</a></li>
+                <li><a href="#videos" data-i18n="navVideos">ڤیدیۆکان</a></li>
+                <li><a href="#library" data-i18n="navLibrary">کتێبخانە</a></li>
+                <li><a href="#quotes" data-i18n="navQuotes">وتەکان</a></li>
+                <li><a href="#about" data-i18n="navAbout">دەربارە</a></li>
+                <li><a href="#community" data-i18n="navCommunity">کۆمەڵگا</a></li>
+                <li><a href="#testimonials" data-i18n="navTestimonials">پێداچوونەوە</a></li>
+                <li><a href="#faq" data-i18n="navFaq">FAQ</a></li>
+                <li><a href="#contact" data-i18n="navContact">پەیوەندی</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="langToggle" aria-label="Switch language" title="EN / KU">
+                    <span id="langToggleLabel">EN</span>
+                </button>
+                <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+                <button id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="navOverlay"></div>
+
+    <!-- ======================= -->
+    <!-- Main -->
+    <!-- ======================= -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content">
+                <span class="hero-tag" data-i18n="heroTag">🌻 پێکەوە باشتر</span>
+                <h1 data-i18n="heroTitle">بەخێربێیت بۆ کورد سمارت</h1>
+
+                <div class="greeting-card reveal">
+                    <h3 id="greetingTitle"></h3>
+                    <p id="greetingMessage"></p>
+                </div>
+
+                <p class="hero-description" data-i18n="heroDesc">هەموو ڕۆژێک دەرفەتێکی تازەیە بۆ باشتربوون</p>
+
+                <div class="hero-status reveal">
+                    <h3 id="greeting"></h3>
+                    <span id="liveClock"></span>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#videos" class="btn" data-i18n="heroBtn">دەستپێبکە</a>
+                    <a href="#library" class="btn btn-outline" data-i18n="heroBtnLibrary">کتێبخانە ببینە</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="illustration.png" alt="Kurd Smart" loading="lazy" draggable="false"
+                    onerror="this.parentElement.style.display='none'">
+            </div>
+        </section>
+
+        <!-- ==========================
+     Smart Daily Quote
+        ========================== -->
+        <div class="daily-quote-card">
+            <span class="quote-icon">🌻</span>
+            <h3 data-i18n="dailyQuoteTitle">گولە بەڕۆژە</h3>
+            <p id="smartDailyQuote"></p>
+        </div>
+
+        <!-- ==========================
+     Progress: XP + Streak
+        ========================== -->
+        <div class="progress-cards reveal">
+
+            <div class="xp-card">
+                <h3><span>🏆</span> <span data-i18n="xpTitle">پلەی کورد سمارت</span></h3>
+                <div class="xp-bar">
+                    <div id="xpFill"></div>
+                </div>
+                <div class="xp-meta">
+                    <h2 id="xpValue">0 XP</h2>
+                    <span id="xpLevel">Lv.1</span>
+                </div>
+                <p id="xpRank">🌱 دەستپێکەر</p>
+            </div>
+
+            <div class="streak-card">
+                <div class="streak-header">
+                    <span class="streak-icon">🔥</span>
+                    <h3 data-i18n="streakTitle">خۆڕاگری ڕۆژانە</h3>
+                </div>
+                <div class="streak-number">
+                    <span id="streakDays">1</span>
+                    <small data-i18n="streakDaysLabel">ڕۆژ</small>
+                </div>
+                <p id="streakMessage">هەموو ڕۆژێک سەردانمان بکە 🌻</p>
+            </div>
+
+        </div>
+
+        <!-- ==========================
+     Motivational Videos
+        ========================== -->
+        <section id="videos" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="videosTag">🌻 تایبەت</span>
+                <h2 data-i18n="videosTitle">ڤیدیۆکانی هاندان</h2>
+                <p data-i18n="videosDesc">لێرە ڤیدیۆکانی هاندان و بەسەرهاتەکان ببینە.</p>
+
+                <div class="cards-grid">
+                    <div class="card video-filter active" data-category="motivation">
+                        <div class="card-icon">🎥</div>
+                        <h3 data-i18n="catMotivationTitle">ڤیدیۆکانی هاندان</h3>
+                        <p data-i18n="catMotivationDesc">ڤیدیۆی ڕۆژانەی هاندەر بۆ ئەوەی بەردەوام بیت</p>
+                    </div>
+
+                    <div class="card video-filter" data-category="ideas">
+                        <div class="card-icon">💡</div>
+                        <h3 data-i18n="catIdeasTitle">بەسەرهاتەکان</h3>
+                        <p data-i18n="catIdeasDesc">ئەزموونی خەلک وەربگرە</p>
+                    </div>
+
+                    <div class="card video-filter" data-category="growth">
+                        <div class="card-icon">🚀</div>
+                        <h3 data-i18n="catGrowthTitle">گەشەپێدان</h3>
+                        <p data-i18n="catGrowthDesc">لەگەڵ هەر دێرێک هەنگاوێک بڕۆ پێشەوە</p>
+                    </div>
+                </div>
+
+                <div class="videos-grid" id="videosGrid">
+                    <!-- Video cards are rendered here by script.js from the
+                         youtubeVideos array — edit that array to swap in
+                         your real YouTube videos. -->
+                </div>
+                <div class="section-divider"></div>
+            </div>
+        </section>
+
+        <!-- ==========================
+     Live Search
+        ========================== -->
+        <div class="search-box">
+            <input type="text" id="liveSearch" data-i18n-placeholder="searchPlaceholder"
+                placeholder="🔍 گەڕان بۆ پەرتووک، وتە، ڤیدیۆ...">
+        </div>
+
+        <!-- ==========================
+     Short Inspiration Videos
+        ========================== -->
+        <section id="shorts">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="shortsTag">🔥 ڤیدیۆی کورت</span>
+                <h2 data-i18n="shortsTitle">هاندان لە ماوەی چەند چرکەیەکدا</h2>
+                <p class="section-description" data-i18n="shortsDesc">ڤیدیۆی کورت و بەهێز بۆ ئەو کاتانەی پێویستت بە
+                    هەندێک هاندانە.</p>
+
+                <div class="shorts-row">
+                    <article class="short-card">
+                        <div class="short-video">
+                            <span class="short-play">▶</span>
+                            <span class="short-time">0:28</span>
+                        </div>
+                        <div class="short-info">
+                            <span class="short-tag" data-i18n="short1Tag">🔥 مێشک</span>
+                            <h3 data-i18n="short1Title">چاوەڕێی هاندان مەکە</h3>
+                            <p data-i18n="short1Desc">خۆڕاگری لەوێدا دەست پێدەکات کە هاندان نامێنێت.</p>
+                        </div>
+                    </article>
+
+                    <article class="short-card">
+                        <div class="short-video">
+                            <span class="short-play">▶</span>
+                            <span class="short-time">0:41</span>
+                        </div>
+                        <div class="short-info">
+                            <span class="short-tag" data-i18n="short2Tag">🌱 گەشە</span>
+                            <h3 data-i18n="short2Title">هەنگاوی بچووک گرنگە</h3>
+                            <p data-i18n="short2Desc">پێویست ناکات خێرا بیت، تەنها ڕامەوەستە.</p>
+                        </div>
+                    </article>
+
+                    <article class="short-card">
+                        <div class="short-video">
+                            <span class="short-play">▶</span>
+                            <span class="short-time">0:35</span>
+                        </div>
+                        <div class="short-info">
+                            <span class="short-tag" data-i18n="short3Tag">🚀 سەرکەوتن</span>
+                            <h3 data-i18n="short3Title">داهاتووت چاودێری دەکات</h3>
+                            <p data-i18n="short3Desc">ئەوەی ئەمڕۆ دەیکەیت، سبەی دروستت دەکات.</p>
+                        </div>
+                    </article>
+
+                    <article class="short-card">
+                        <div class="short-video">
+                            <span class="short-play">▶</span>
+                            <span class="short-time">0:22</span>
+                        </div>
+                        <div class="short-info">
+                            <span class="short-tag" data-i18n="short4Tag">🌻 ژیان</span>
+                            <h3 data-i18n="short4Title">بەردەوام بڕۆ پێشەوە</h3>
+                            <p data-i18n="short4Desc">تەنانەت هەنگاوێکی بچووکیش هەنگاوێکی پێشەوەیە.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="shorts-hint" data-i18n="shortsHint">← بۆ زیاتر بگەڕێ →</div>
+            </div>
+        </section>
+
+        <!-- ==========================
+     Library / Books  (NEW)
+        ========================== -->
+        <section id="library" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="libraryTag">📚 کتێبخانە</span>
+                <h2 data-i18n="libraryTitle">کتێبخانەی کورد سمارت</h2>
+                <p class="section-description" data-i18n="libraryDesc">
+                    کۆمەڵێک لە باشترین پەرتووکەکانی گەشەپێدانی کەسی و دەروونناسی، بۆ ئەوەی هەموو ڕۆژێک شتێکی نوێ فێر
+                    بیت.
+                </p>
+
+                <div class="book-filters">
+                    <button class="book-filter active" data-book-category="all" data-i18n="bookFilterAll">هەموو</button>
+                    <button class="book-filter" data-book-category="mindset" data-i18n="bookFilterMindset">مێشک و
+                        بیرکردنەوە</button>
+                    <button class="book-filter" data-book-category="habit" data-i18n="bookFilterHabit">خوو و
+                        بەردەوامی</button>
+                    <button class="book-filter" data-book-category="success" data-i18n="bookFilterSuccess">سەرکەوتن</button>
+                    <button class="book-filter" data-book-category="life" data-i18n="bookFilterLife">ژیان و
+                        فەلسەفە</button>
+                </div>
+
+                <div class="books-grid" id="booksGrid">
+
+                    <div class="book-card" data-book-category="habit" data-title="Atomic Habits" data-author="James Clear">
+                        <div class="book-cover" style="background:linear-gradient(160deg,#0F4C81,#163d63);">📗</div>
+                        <div class="book-info">
+                            <span class="book-badge" data-i18n="bookBadgeHabit">خوو</span>
+                            <h3>Atomic Habits</h3>
+                            <span class="book-author">James Clear</span>
+                            <p data-i18n="book1Desc">چۆن خووی بچووک دروستبکەیت کە دەبنە گۆڕانکاریی گەورە لە ژیانتدا.</p>
+                            <div class="book-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card" data-book-category="mindset" data-title="Mindset" data-author="Carol Dweck">
+                        <div class="book-cover" style="background:linear-gradient(160deg,#FF8C42,#c96420);">🧠</div>
+                        <div class="book-info">
+                            <span class="book-badge" data-i18n="bookBadgeMindset">مێشک</span>
+                            <h3>Mindset</h3>
+                            <span class="book-author">Carol S. Dweck</span>
+                            <p data-i18n="book2Desc">جیاوازی نێوان بیرکردنەوەی جێگیر و بیرکردنەوەی گەشەکردن.</p>
+                            <div class="book-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card" data-book-category="success" data-title="Deep Work" data-author="Cal Newport">
+                        <div class="book-cover" style="background:linear-gradient(160deg,#0F4C81,#2c6ba0);">🎯</div>
+                        <div class="book-info">
+                            <span class="book-badge" data-i18n="bookBadgeSuccess">سەرکەوتن</span>
+                            <h3>Deep Work</h3>
+                            <span class="book-author">Cal Newport</span>
+                            <p data-i18n="book3Desc">چۆن سەرنجت کۆبکەیتەوە بۆ کارکردنی قووڵ لە دنیایەکی پەرتەوازەدا.</p>
+                            <div class="book-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card" data-book-category="life" data-title="Ikigai" data-author="Héctor García">
+                        <div class="book-cover book-cover-img">
+                            <img src="library/covers/ikigai-cover.jpg" alt="Ikigai book cover" loading="lazy">
+                        </div>
+                        <div class="book-info">
+                            <span class="book-badge" data-i18n="bookBadgeLife">ژیان</span>
+                            <h3>Ikigai</h3>
+                            <span class="book-author">Héctor García &amp; Francesc Miralles</span>
+                            <p data-i18n="book4Desc">نهێنی ژاپۆنی بۆ دۆزینەوەی مانا و خۆشی لە ژیانی ڕۆژانەدا.</p>
+                            <div class="book-rating">⭐⭐⭐⭐⭐</div>
+                            <a class="book-read-btn" href="library/IKIGAI_Kurd_Smart.pdf" target="_blank" rel="noopener"
+                               data-i18n="bookReadBtn">📖 خوێندنەوەی کورتەکە</a>
+                        </div>
+                    </div>
+
+                    <div class="book-card" data-book-category="habit" data-title="The Power of Habit" data-author="Charles Duhigg">
+                        <div class="book-cover" style="background:linear-gradient(160deg,#7d4fc9,#4d2d8a);">🔁</div>
+                        <div class="book-info">
+                            <span class="book-badge" data-i18n="bookBadgeHabit">خوو</span>
+                            <h3>The Power of Habit</h3>
+                            <span class="book-author">Charles Duhigg</span>
+                            <p data-i18n="book5Desc">زانستی خوو، و چۆن دەتوانین ژیانمان بگۆڕین بە گۆڕینی خووەکانمان.</p>
+                            <div class="book-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card" data-book-category="mindset" data-title="Grit" data-author="Angela Duckworth">
+                        <div class="book-cover" style="background:linear-gradient(160deg,#c94f4f,#7d2b2b);">🔥</div>
+                        <div class="book-info">
+                            <span class="book-badge" data-i18n="bookBadgeMindset">مێشک</span>
+                            <h3>Grit</h3>
+                            <span class="book-author">Angela Duckworth</span>
+                            <p data-i18n="book6Desc">هێزی پەروپاگەندە و خۆڕاگری لە دەستکەوتنی سەرکەوتنی درێژخایەندا.</p>
+                            <div class="book-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p id="booksEmptyState" class="books-empty" data-i18n="booksEmpty" hidden>هیچ پەرتووکێک نەدۆزرایەوە.</p>
+
+                <div class="section-divider"></div>
+            </div>
+        </section>
+
+        <!-- quotes -->
+        <section id="quotes" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="quotesTag">💬 وتەی ڕۆژ</span>
+                <h2 data-i18n="quotesTitle">وتەی ڕۆژ</h2>
+
+                <div class="quote-story-wrap">
+                    <button class="quote-nav-btn" id="quotePrevBtn" aria-label="Previous quote">‹</button>
+
+                    <div class="quote-story-card">
+                        <div class="quote-story-image" id="quoteStoryImage">
+                            <span class="quote-day-badge" id="quoteDayBadge">DAY-1</span>
+                            <h3 class="quote-story-title" id="quoteStoryTitle"></h3>
+                        </div>
+
+                        <div class="quote-story-body">
+                            <span class="quote-story-daylabel" id="quoteDayLabel">Day-1</span>
+                            <ul class="quote-story-list">
+                                <li class="q-line-tag">▪️ <span id="quoteTagText"></span></li>
+                                <li class="q-line-full">▫️ <span id="quoteFullText"></span></li>
+                            </ul>
+                            <div class="quote-story-divider">••••••••••</div>
+                            <div class="quote-story-footer">
+                                🔘 <span data-i18n="pastExperienceLabel">ئەزموونی ڕابردوو</span> 🌻🤍🌟
+                            </div>
+                            <button id="copyQuote" data-i18n="copyQuoteBtn">کۆپی کردنی وتە 📋</button>
+                        </div>
+                    </div>
+
+                    <button class="quote-nav-btn" id="quoteNextBtn" aria-label="Next quote">›</button>
+                </div>
+
+                <div class="section-divider"></div>
+            </div>
+        </section>
+
+        <!-- ==========================
+     Smart Fact
+        ========================== -->
+        <div class="fact-card">
+            <span class="fact-icon">💡</span>
+            <h3 data-i18n="factTitle">ئایا دەزانی ؟</h3>
+            <p id="dailyFact"></p>
+        </div>
+
+        <!-- Feature section -->
+        <section id="features" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="featuresTag">بۆچی کورد سمارت؟🌟</span>
+                <h2 data-i18n="featuresTitle">چەند هۆکار بۆ هەڵبژاردنی کورد سمارت</h2>
+                <p class="section-description" data-i18n="featuresDesc">هەموو ڕۆژێک زانیاری، هاندان و پەرتووکە
+                    باشەکان لە شوێنێکدا.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3 data-i18n="feature1Title">پەرتووکەکان</h3>
+                        <p data-i18n="feature1Desc">هەڵبژاردنی باشترین پەرتووکەکانی گەشەی کەسی.</p>
+                        <a href="#library" class="feature-btn" data-i18n="featureBtn">زیاتر ببینە →</a>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 data-i18n="feature2Title">هاندان</h3>
+                        <p data-i18n="feature2Desc">ڤیدیۆ و بیرۆکەی هەموو ڕۆژێک بۆ بەردەوامبوون.</p>
+                        <a href="#videos" class="feature-btn" data-i18n="featureBtn">زیاتر ببینە →</a>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3 data-i18n="feature3Title">بیرۆکەی نوێ</h3>
+                        <p data-i18n="feature3Desc">فێربە لە باشترین بیرکردنەوە و شێوازی ژیان.</p>
+                        <a href="#quotes" class="feature-btn" data-i18n="featureBtn">زیاتر ببینە →</a>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section id="stats">
+            <div class="stats-container">
+                <div class="stat-box">
+                    <h3>100+</h3>
+                    <p data-i18n="stat1">ڤیدیۆی هاندان بۆ سەرکەوتن</p>
+                </div>
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p data-i18n="stat2">پەرتووک بۆ گەشەپێدان</p>
+                </div>
+                <div class="stat-box">
+                    <h3>365</h3>
+                    <p data-i18n="stat3">وتەی ڕۆژانە</p>
+                </div>
+                <div class="stat-box">
+                    <h3>∞</h3>
+                    <p data-i18n="stat4">گەشەپێدانی بەردەوام</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="aboutTag">👤 دەربارەی کورد سمارت</span>
+                <h2 data-i18n="aboutTitle">کورد سمارت چییە؟</h2>
+                <p class="section-description" data-i18n="aboutDesc">شوێنێک بۆ هاندان، فێربوون و گەشەکردنی ڕۆژانە.</p>
+
+                <div class="about-content">
+                    <div class="about-quote-card">
+                        <span class="quote-icon">📖</span>
+                        <h3 data-i18n="aboutQuoteTitle">پابەندبوون، خۆڕاگری، بەردەوامی</h3>
+                        <p data-i18n="aboutQuoteText">ناتوانیت دەست بە بەشی داهاتووی ژیانت بکەیت ئەگەر بەردەوام بیت لە
+                            خوێندنەوەی لاپەڕەکانی ڕابردووت.</p>
+                    </div>
+
+                    <div class="about-text">
+                        <h3 data-i18n="aboutMeTitle">دەربارەی من...</h3>
+                        <p data-i18n="aboutMeText">
+                            من سەروان فەرسەت خدر، قوتابی لە بەشی ئەندازیاری سیستەمی زانیاری. لە ١-٧-٢٠٢٦ بڕیارم دا
+                            بەدروستکردنی وێبسایتێک بەناوی کورد سمارت. دوای ماندووبوونێکی زۆر توانیم لەماوەی مانگێک
+                            ڤێرژنی یەکەمی وێبسایتەکە تەواو بکەم، بۆ ئەوەی ڕۆژانە هەنگاوێکیش بێت ببێتە وازهێنان لە
+                            خووە خراپەکان، هەنگاو نان بۆ ژیانێکی باشتر.🌻🤍🌟
+                        </p>
+                        <a href="#contact" class="btn" data-i18n="aboutBtn">زیاتر بزانە</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community -->
+        <section id="community" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="communityTag">🌍 کۆمەڵگەی کورد سمارت</span>
+                <h2 data-i18n="communityTitle">ئێمە تەنها وێبسایتێک نین</h2>
+                <p class="section-description" data-i18n="communityDesc">هەزاران کەس هەموو ڕۆژێک لەگەڵ یەک فێردەبن و
+                    گەشە دەکەن.</p>
+
+                <div class="community-grid">
+                    <div class="community-card">
+                        <span class="community-icon">❤️</span>
+                        <h3 class="counter" data-target="1246">0</h3>
+                        <p data-i18n="community1">ئەندام</p>
+                    </div>
+                    <div class="community-card">
+                        <span class="community-icon">💬</span>
+                        <h3 class="counter" data-target="387">0</h3>
+                        <p data-i18n="community2">فیدباک</p>
+                    </div>
+                    <div class="community-card">
+                        <span class="community-icon">📚</span>
+                        <h3 class="counter" data-target="8300">0</h3>
+                        <p data-i18n="community3">پەرتووکی پێشنیارکراو</p>
+                    </div>
+                    <div class="community-card">
+                        <span class="community-icon">🚀</span>
+                        <h3 data-i18n="communityEveryDay">هەموو ڕۆژێک</h3>
+                        <p data-i18n="community4">گەشە دەکەین</p>
+                    </div>
+                </div>
+
+                <a href="#contact" class="btn" data-i18n="communityBtn">بەشداربە لە کۆمەڵگەکەمان</a>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="testimonialsTag">💬 فیدباکی بەکارهێنەران</span>
+                <h2 data-i18n="testimonialsTitle">خەڵک چی دەڵێن دەربارەی Kurd Smart؟</h2>
+                <p class="section-description" data-i18n="testimonialsDesc">وشەی چەند کەسێک کە لەگەڵ ئێمە گەشەیان
+                    کردووە.</p>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="quote-symbol">❝</div>
+                        <div class="testimonial-header">
+                            <div class="avatar">S</div>
+                            <div>
+                                <h3>Sara</h3>
+                                <span data-i18n="roleStudent">قوتابی</span>
+                            </div>
+                        </div>
+                        <p data-i18n="testimonial1">"سوپاس بۆ Kurd Smart. هەموو ڕۆژێک هانم دەدات بۆ خوێندنەوە و
+                            گەشەکردنی خۆم."</p>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="quote-symbol">❝</div>
+                        <div class="testimonial-header">
+                            <div class="avatar">A</div>
+                            <div>
+                                <h3>Ahmed</h3>
+                                <span data-i18n="roleReader">خوێنەر</span>
+                            </div>
+                        </div>
+                        <p data-i18n="testimonial2">"ڕووکارەکە زۆر جوانە. پەرتووکەکانیش بەڕاستی هەڵبژێردراون."</p>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="quote-symbol">❝</div>
+                        <div class="testimonial-header">
+                            <div class="avatar">K</div>
+                            <div>
+                                <h3>Kiyan</h3>
+                                <span data-i18n="roleDeveloper">گەشەپێدەر</span>
+                            </div>
+                        </div>
+                        <p data-i18n="testimonial3">"باشترین شوێنە بۆ ئەو کەسانەی دەیانەوێت هەموو ڕۆژێک باشتر بن."</p>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="faqTag">❓ پرسیارە باوەکان</span>
+                <h2 data-i18n="faqTitle">پرسیارە زۆر دووبارەکراوەکان</h2>
+                <p class="section-description" data-i18n="faqDesc">ئەگەر پرسیارت هەیە، لەوانەیە وەڵامەکەی لێرە
+                    بدۆزیتەوە.</p>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faqQ1">📚 کورد سمارت چییە؟</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faqA1">کورد سمارت وێبسایتێکە بۆ گەشەپێدانی کەسی، پەرتووک، هاندان و بیرۆکەی
+                                نوێ.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faqQ2">💰 بەکارهێنانی وێبسایتەکە بەخۆڕاییە؟</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faqA2">بەڵێ، هەموو ناوەڕۆکەکان بەخۆڕایی دەخرێنە بەردەست.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faqQ3">📩 چۆن پەیوەندی بکەم؟</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faqA3">دەتوانیت لە بەشی "پەیوەندی" نامە بنێریت یان لە ڕێگای سۆشیال میدیا
+                                پەیوەندیمان پێوە بکەیت.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="faqQ4">🌱 ئایا بابەتی نوێ زیاد دەکرێت؟</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faqA4">بەڵێ, ڕۆژانە وتە، پەرتووک و ڤیدیۆی نوێ زیاد دەکرێت.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+            </div>
+        </section>
+
+        <!-- contact -->
+        <section id="contact" class="reveal">
+            <div class="section-container">
+                <span class="section-tag" data-i18n="contactTag">📩 پەیوەندی</span>
+                <h2 data-i18n="contactTitle">پەیوەندیمان پێوە بکە</h2>
+                <p data-i18n="contactDesc">ئەگەر پرسیار یان پێشنیارت هەیە، پەیوەندیمان پێوە بکە.</p>
+
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="sarwan.jpg" alt="Sarwan Farsat" loading="lazy">
+                    </div>
+                    <h3 data-i18n="profileName">سەروان فەرسەت</h3>
+                    <span class="profile-role">Founder of Kurd Smart</span>
+                    <p class="profile-description" data-i18n="profileDesc">ڕێنماییکردنت بۆ گەشەکردنی ڕۆژانە لە
+                        ڕێگەی زانیاری، پەرتووک، بیرۆکەی بەهێزەوە، هەموو ڕۆژێک.</p>
+
+                    <div class="social-links">
+                        <a href="#" data-i18n="socialEmail">📧 ئیمەیل</a>
+                        <a href="#">📘 Facebook</a>
+                        <a href="#">📷 Instagram</a>
+                        <a href="#">▶️ YouTube</a>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span class="footer-text" dir="ltr">
+            © <span id="year"></span> Kurd Smart. All Rights Reserved.
+        </span>
+        <p id="footerMessage"></p>
+    </footer>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
